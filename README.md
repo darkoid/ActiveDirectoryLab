@@ -52,7 +52,7 @@ https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/cbc39365-3ea0-4427
 
 https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/0bea7a7b-4c45-43b1-a29a-7834ea9b68a6
 
-After installing Windows Server 2022 on the Virtual Machine with username/password = **Server22/Server@@2022** the first thing I do is install VMware tools to ease my copy-pasting and get resolution according to my window size. And before restarting I also rename this pc to **MARVEL-DC** to make this a Marvel thmemed active .
+First install Windows Server 2022 on the Virtual Machine with password = **Server@@2022** for the administrator. First thing to do is install VMware tools to ease my copy-pasting and get resolution according to my window size. And before restarting I also rename this pc to **MARVEL-DC** to make this a Marvel thmemed AD Lab.
 
 ![image](https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/030e6e8c-0dc3-4375-9262-131cc53cd53a)
 
@@ -65,22 +65,24 @@ NetBIOS doamin name: MARVEL
 ```
 /////video here////
 
-Now lets setup Users on our server. If you are ever getting confused about the user and password just follow the topology.
+Now lets setup Users on our server. If you are ever getting confused about the user and password just follow the topology. Also in this video we create a share so we enable the port 139 for SMB service as most organisation have to share files and they do it via SMB share on port 139 and we are trying to simulate that.
 ```
 Details used-
 username : password = fcastle:Password1, mmurdock:Password2, tstark:Morgan@2022, sqlservice:MYpassword!@#2023
+file share profile = SMB Share - Quick
+file share name = Micro
 ```
-/////video here////
-
-Lets create a share so we enable the port 139 for SMB service as most organisation have to share files and they do it via SMB share on port 139 and we are trying to simulate that.
 
 /////video here////
+I forgot to record the part where i put the SQLService user password in its description which you can see is shown after I was finished creating users. I did this because many admins thinks that description can't be read by others which we'll show that its not true in our [ActiveDirectoryAttacks](https://github.com/darkoid/ActiveDirectoryAttacks).
 
-Lets change few policies and permissions so that when we goto our ActiveDirectoryAttacks we have several attack vectors to practice on.
+Lets change few policies and permissions so that when we do ActiveDirectoryAttacks, we have several attack vectors to practice on.
 
-/////video here//// Also show change the user SQL service's description to mention the password as well.
+/////video here////
 
-Now that we are finished setting up users, shares and policies, we can install windows 11 (Client1) and join it to our Domain.
+Now that we are finished setting up users, shares and policies, we can now install windows 11 (Client11) and join it to our Domain.
+
+> Note: When we setup Windows 11 on VMWare it asks for encryption on the vm, which is requirement for updated windows so just put a simple password like **Password** and tick to remember it. We won't be needing this password in our ActiveDirectoryAttacks project.
 
 ## Credits
 
