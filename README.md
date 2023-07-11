@@ -52,7 +52,7 @@ https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/cbc39365-3ea0-4427
 
 https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/0bea7a7b-4c45-43b1-a29a-7834ea9b68a6
 
-First install Windows Server 2022 on the Virtual Machine with password = **Server@@2022** for the administrator. First thing to do is install VMware tools to ease my copy-pasting and get resolution according to my window size. And before restarting I also rename this pc to **MARVEL-DC** to make this a Marvel thmemed AD Lab.
+First install Windows Server 2022 on the Virtual Machine with password = **Server@@2022** for the administrator. First thing to do is install VMware tools to ease my copy-pasting and get resolution according to my window size.  Now take a snapshot and before restarting I also rename this pc to **MARVEL-DC** to make this a Marvel thmemed AD Lab.
 
 ![image](https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/030e6e8c-0dc3-4375-9262-131cc53cd53a)
 
@@ -80,9 +80,23 @@ Lets change few policies and permissions so that when we do ActiveDirectoryAttac
 
 /////video here////
 
-Now that we are finished setting up users, shares and policies, we can now install windows 11 (Client11) and join it to our Domain.
+Now that we are finished setting up users, shares and policies, we can now install windows 11 (Client11).
 
 > Note: When we setup Windows 11 on VMWare it asks for encryption on the vm, which is requirement for updated windows so just put a simple password like **Password** and tick to remember it. We won't be needing this password in our ActiveDirectoryAttacks project.
+
+```
+Details used in windows 11 enterprise installation-
+Enter your name : Client11
+Password : Password12345
+Security Questions : All answers were "bob"
+Privacy settings : off to everything
+```
+
+First thing to do after login is to install VMWare tools and take snapshot then change computer name to **THEPUNISHER** and set network adapter to vnet0 and restart -
+
+![image](https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/136be3f2-edfa-45c5-b102-0f2b5a5f0edb)
+
+
 
 ## Credits
 
