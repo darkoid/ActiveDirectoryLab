@@ -20,27 +20,30 @@ Function generate-random-name() {
         $count++
     }
 
-    return $name
+    $name
 
 }
 
 $count = 1
+
+New-ADOrganizationalUnit -Name _USERS -ProtectedFromAccidentalDeletion $false
+
 while ($count -lt $NUMBER_OF_ACCOUNTS_TO_CREATE) {
-    $fisrtName = generate-random-name
+    $firstname = generate-random-name
     $lastName = generate-random-name
-    $username = $fisrtName + '.' + $lastName
+    $username = $firstname + '.' + $lastName
     $password = ConvertTo-SecureString $PASSWORD_FOR_USERS -AsPlainText -Force
 
-    Write-Host "Creating user: $($username)" -BackgroundColor Black -ForegroundColor Cyan
+    Write-Host "[+] Creating Username:Password = $($username):'$($PASSWORD_FOR_USERS)'" -ForegroundColor Green
     
     New-AdUser -AccountPassword $password `
-               -GivenName $firstName `
-               -Surname $lastName `
+               -GivenName $first `
+               -Surname $last `
                -DisplayName $username `
                -Name $username `
                -EmployeeID $username `
                -PasswordNeverExpires $true `
-               -Path "ou=_EMPLOYEES,$(([ADSI]`"").distinguishedName)" `
+               -Path "ou=_USERS,$(([ADSI]`"").distinguishedName)" `
                -Enabled $true
     $count++
 }
