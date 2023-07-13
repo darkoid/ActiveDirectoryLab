@@ -108,7 +108,7 @@ After config It started showing error & asking to restart so I did and it fixed 
 https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/d21b342f-01cf-475f-a7d5-593771d9e579
 
 
-lets begin bulk user addition with our [script](/bulk-user-addition.ps1). Note that I pasted the code from main machine to server as its advised now to use Browser on the server machine-
+lets begin bulk user addition with our [script](/bulk-user-addition.ps1). I have also added an additional [script](/bulk-user-from-names.ps1) to add users using a `name.txt` file. Note that I pasted the code from main machine to server as its advised now to use Browser on the server machine-
 
 
 https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/fbca67b8-161c-4346-a462-aea209fe346b
