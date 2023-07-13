@@ -48,9 +48,9 @@ The topology of my active direcotory lab for this project -
 
 For the Virtual Machine that will be hosting my Domain Controller, I need two network adapters. I need the NAT that will use my host IP address from my home router and an internal network so that my DC can communicate with other Virtual Machines. For the internal network I will be using **vnet0**. Refer to the diagram at the beginning. <a href="./vnet0.md">How to create vnet0 and setup two networks in windows?</a>
 
-https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/cbc39365-3ea0-4427-9b2e-191a331a2f31
+https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/677149f3-e91b-4561-a186-071422627460
 
-https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/0bea7a7b-4c45-43b1-a29a-7834ea9b68a6
+https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/e3f219ba-41f0-4dff-94ea-6b261e41a474
 
 First install Windows Server 2022 on the Virtual Machine with **Server@@2022** for the administrator. First thing to do is install VMware tools to ease my copy-pasting and get resolution according to my window size.  Now take a snapshot and before restarting I also rename this pc to **MARVEL-DC** to make this a Marvel thmemed AD Lab.
 
@@ -63,7 +63,12 @@ Root domain name: MARVEL.local
 DSRM Password: Password@1
 NetBIOS doamin name: MARVEL
 ```
-/////video here////
+
+https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/0482fb63-0584-42a2-8199-bbaaaa1f58e5
+
+After restart the logon portal will look like this (MARVEL/ in front of our user)-
+
+![image](https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/c827ee3f-1385-4f0d-994c-b6a631d2d10e)
 
 Now lets setup Users on our server. If you are ever getting confused about the user and password just follow the topology. Also in this video we create a share so we enable the port 139 for SMB service as most organisation have to share files and they do it via SMB share on port 139 and we are trying to simulate that.
 ```
@@ -73,13 +78,17 @@ file share profile = SMB Share - Quick
 file share name = Micro
 ```
 
-/////video here////
+
+https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/d9796fdc-738c-4b1a-af90-8e06a832e85f
+
 
 I forgot to record the part where i put the SQLService user password in its description which you can see is shown after I was finished creating users. I did this because many admins thinks that description can't be read by others which we'll show that its not true in our [ActiveDirectoryAttacks](https://github.com/darkoid/ActiveDirectoryAttacks).
 
 Lets change few policies and permissions so that when we do ActiveDirectoryAttacks, we have several attack vectors to practice on.
 
-/////video here////
+
+https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/7155cea5-49a2-47b2-b6d4-a233ea3051d6
+
 
 Lets take a snapshot here as we have done steps followed by TCM so if anything goes wrong we can turn back.
 
@@ -89,15 +98,21 @@ Now lets login to domain specific Tony Stark account instead of Administrator in
 
 Now lets install **Remote Access** with RAS and Routing server roles so our client computers can acess the internet via our DC and configure it with NAT service on our **vnet0** network-
 
-//// video ////
+
+https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/6e983863-2901-4fe3-9baf-a714158b547e
+
 
 After config It started showing error & asking to restart so I did and it fixed the problem. Next step is to setup DHCP roles to our AD environment-
 
-//// video ////
+
+https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/d21b342f-01cf-475f-a7d5-593771d9e579
+
 
 lets begin bulk user addition with our [script](/bulk-user-addition.ps1). Note that I pasted the code from main machine to server as its advised now to use Browser on the server machine-
 
-//// video ////
+
+https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/fbca67b8-161c-4346-a462-aea209fe346b
+
 
 **Now that we are finished setting up our server machine, we can now install windows 11 (Client11)**
 > Note: When we setup Windows 11 on VMWare it asks for encryption on the vm, which is requirement for updated windows so just put a simple password like **Password** and tick to remember it. We won't be needing this password in our ActiveDirectoryAttacks project.
@@ -124,7 +139,9 @@ Take a snapshot of this client machine so if anythings goes wront we can turn ba
 
 Remember at this point it is absolutly important to have both machines running. Lets go to our **client11** (THEPUNISHER) machine and make it a member of the domain "MARVEL.local" -
 
-![image](https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/232e0f47-9d6c-47db-8b0b-55c6cecb19d4)
+
+https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/2afc82cb-8153-491a-8f3b-77dd0ddba423
+
 
 As you can see we got the MARVEL\fcastle on our logon portal -
 
@@ -136,7 +153,9 @@ As you can see we can ping domain and access internet -
 
 To check the accounts we created via script lets logon to one of them after signing out of fcastle user-
 
-////video here////
+
+https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/69f3a882-a22b-47a7-b21f-b98f7b209b4d
+
 
 ## Credits
 
