@@ -10,9 +10,9 @@ This project is demonstration of creating an active directory (AD) home lab on V
 
 ## Hardware Requirement
 
-- Minimum : 2GB on DomainController & 1GB on Domain VMs
-- Recommended : 4GB on DomainController & 2GB on Domain VMs
-> Total RAM spend on virtual machines should not be more than half of systems'. In total your sytem should have 6GB to 12GB of RAM.
+- Minimum : 2GB on DomainController & 2GB on Domain VMs
+- Recommended : 6GB on DomainController & 4GB on Domain VMs
+> Total RAM spend on virtual machines should not be more than half of systems'. In total your sytem should have 8GB to 20GB of RAM.
 
 ## Software Requirement
 
@@ -52,7 +52,7 @@ https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/cbc39365-3ea0-4427
 
 https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/0bea7a7b-4c45-43b1-a29a-7834ea9b68a6
 
-First install Windows Server 2022 on the Virtual Machine with password = **Server@@2022** for the administrator. First thing to do is install VMware tools to ease my copy-pasting and get resolution according to my window size.  Now take a snapshot and before restarting I also rename this pc to **MARVEL-DC** to make this a Marvel thmemed AD Lab.
+First install Windows Server 2022 on the Virtual Machine with **Server@@2022** for the administrator. First thing to do is install VMware tools to ease my copy-pasting and get resolution according to my window size.  Now take a snapshot and before restarting I also rename this pc to **MARVEL-DC** to make this a Marvel thmemed AD Lab.
 
 ![image](https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/030e6e8c-0dc3-4375-9262-131cc53cd53a)
 
@@ -74,14 +74,32 @@ file share name = Micro
 ```
 
 /////video here////
+
 I forgot to record the part where i put the SQLService user password in its description which you can see is shown after I was finished creating users. I did this because many admins thinks that description can't be read by others which we'll show that its not true in our [ActiveDirectoryAttacks](https://github.com/darkoid/ActiveDirectoryAttacks).
 
 Lets change few policies and permissions so that when we do ActiveDirectoryAttacks, we have several attack vectors to practice on.
 
 /////video here////
 
-Now that we are finished setting up users, shares and policies, we can now install windows 11 (Client11).
+Lets take a snapshot here as we have done steps followed by TCM so if anything goes wrong we can turn back.
 
+Now lets login to domain specific Tony Stark account instead of Administrator in Server 2022 with credential (**MARVEL\tstark : Morgan@2022**)-
+
+![image](https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/1b4d98a4-8d01-4655-b141-e6de84753770)
+
+Now lets install **Remote Access** with RAS and Routing server roles so our client computers can acess the internet via our DC and configure it with NAT service on our **vnet0** network-
+
+//// video ////
+
+After config It started showing error & asking to restart so I did and it fixed the problem. Next step is to setup DHCP roles to our AD environment-
+
+//// video ////
+
+lets begin bulk user addition with our [script](/bulk-user-addition.ps1). Note that I pasted the code from main machine to server as its advised now to use Browser on the server machine-
+
+//// video ////
+
+**Now that we are finished setting up our server machine, we can now install windows 11 (Client11)**
 > Note: When we setup Windows 11 on VMWare it asks for encryption on the vm, which is requirement for updated windows so just put a simple password like **Password** and tick to remember it. We won't be needing this password in our ActiveDirectoryAttacks project.
 
 ```
@@ -96,7 +114,29 @@ First thing to do after login is to install VMWare tools and take snapshot then 
 
 ![image](https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/136be3f2-edfa-45c5-b102-0f2b5a5f0edb)
 
+I have set both the machines this way with custom background to easily go back and forth -
 
+![image](https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/6ed5d15e-5a05-4cfa-a97f-704eff8a6aa3)
+
+Take a snapshot of this client machine so if anythings goes wront we can turn back.
+
+![image](https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/788b41d5-12bf-45a3-a532-723774fc219d)
+
+Remember at this point it is absolutly important to have both machines running. Lets go to our **client11** (THEPUNISHER) machine and make it a member of the domain "MARVEL.local" -
+
+![image](https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/232e0f47-9d6c-47db-8b0b-55c6cecb19d4)
+
+As you can see we got the MARVEL\fcastle on our logon portal -
+
+![image](https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/84f348e6-0eb4-483b-958f-3be924e4a36f)
+
+As you can see we can ping domain and access internet -
+
+![image](https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/598f02a3-1146-4c07-a14b-aa9a1cb0f7fd)
+
+To check the accounts we created via script lets logon to one of them after signing out of fcastle user-
+
+////video here////
 
 ## Credits
 
