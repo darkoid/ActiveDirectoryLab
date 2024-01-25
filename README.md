@@ -44,8 +44,7 @@ This project is demonstration of creating an active directory (AD) home lab on V
 
 The topology of my active direcotory lab for this project -
 
-![image](https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/cf604c73-17ed-4c81-9622-df1d8cac58e7)
-Apologies for some yellow dots I was making this on cloud.smartdraw and website started showing error and I coudn't reload otherwise it would asked to pay so I ss it as it was. Hope its not too inconvinient.
+![Drawing](https://github.com/darkoid/ActiveDirectoryLab/assets/81341961/c4e3585d-768b-491d-9a1f-1d82a6eb5599)
 
 For the Virtual Machine that will be hosting my Domain Controller, I need two network adapters. I need the NAT that will use my host IP address from my home router and an internal network so that my DC can communicate with other Virtual Machines. For the internal network I will be using **vnet0**. Refer to the diagram at the beginning. <a href="./vnet0.md">How to create vnet0 and setup two networks in windows?</a>
 
